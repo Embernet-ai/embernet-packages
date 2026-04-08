@@ -1,1 +1,63 @@
 # embernet-packages
+
+Public binary distribution for the EmberNet industrial edge platform.
+
+This repository hosts versioned release assets for third-party and proprietary software packages used in EmberNet deployments. Assets are attached to GitHub Releases and downloaded by Helm chart init containers, deployment scripts, and CI/CD pipelines at install time.
+
+---
+
+## Available Packages
+
+| Package | Latest Version | Release Tag |
+|---|---|---|
+| Codesys Control SL | 4.18.0.0 | [v4.18.0.0](https://github.com/Embernet-ai/embernet-packages/releases/tag/v4.18.0.0) |
+
+---
+
+## Downloading Assets
+
+### Using the GitHub CLI
+
+```bash
+gh release download v4.18.0.0 \
+  -R Embernet-ai/embernet-packages \
+  -p "codesys-*"
+```
+
+### Using curl with a GitHub Token
+
+```bash
+# Get the asset download URL
+ASSET_URL=$(curl -s \
+  -H "Authorization: token $GITHUB_TOKEN" \
+  https://api.github.com/repos/Embernet-ai/embernet-packages/releases/tags/v4.18.0.0 \
+  | jq -r '.assets[] | select(.name | contains("codesys")) | .url')
+
+# Download
+curl -L \
+  -H "Authorization: token $GITHUB_TOKEN" \
+  -H "Accept: application/octet-stream" \
+  -o codesys-installer.run \
+  "$ASSET_URL"
+```
+
+> The token requires `contents:read` scope on this repository.
+
+---
+
+## Adding a New Package
+
+1. Build or obtain the binary/installer.
+2. Create a new GitHub Release with a version tag matching the upstream version (e.g., `v4.18.0.0`).
+3. Upload the binary as a release asset.
+4. Document the SHA256 hash in the release description.
+5. Update the table above in this README.
+
+---
+
+## Notes
+
+- Assets are **not** stored in the Git tree — only in GitHub Releases.
+- Stable direct download URLs follow the pattern:  
+  `https://github.com/Embernet-ai/embernet-packages/releases/download/<tag>/<filename>`
+- This repository is public. Do **not** upload proprietary licensed binaries that cannot be redistributed.
