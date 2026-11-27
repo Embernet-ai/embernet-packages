@@ -1,6 +1,6 @@
 # embernet-packages
 
-Public binary distribution for the EmberNet industrial edge platform.
+Public binary distribution for [EmberNet](https://embernet.ai), the complete industrial edge platform.
 
 This repository hosts versioned release assets for third-party and proprietary software packages used in EmberNet deployments. Assets are attached to GitHub Releases and downloaded by Helm chart init containers, deployment scripts, and CI/CD pipelines at install time.
 
