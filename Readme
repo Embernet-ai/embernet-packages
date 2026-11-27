@@ -57,7 +57,7 @@ curl -L \
 
 ## Notes
 
-- Assets are **not** stored in the Git tree — only in GitHub Releases.
+- Assets are **not** stored in the Git tree, only in GitHub Releases.
 - Stable direct download URLs follow the pattern:  
   `https://github.com/Embernet-ai/embernet-packages/releases/download/<tag>/<filename>`
 - This repository is public. Do **not** upload proprietary licensed binaries that cannot be redistributed.
